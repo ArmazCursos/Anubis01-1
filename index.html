@@ -23,10 +23,7 @@
             navigator.clipboard.writeText(textToCopy).then(function() {
                 var confirmation = confirm('Texto copiado para a área de transferência. Clique em OK para fechar esta página.');
                 if (confirmation) {
-                    window.setTimeout(function() {
-                        window.open('', '_self', '');
-                        window.close();
-                    }, 0);
+                    window.location.replace('about:blank');
                 }
             }).catch(function(err) {
                 console.error('Erro ao copiar texto: ', err);
