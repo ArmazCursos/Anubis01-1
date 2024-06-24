@@ -21,9 +21,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             var textToCopy = 'setpos 1347.968750 -547.968689 -64.128754;setang 3.134806 -111.231895 0.000000; say (Flash) Clique Esquerdo + Jumpthrow; give weapon_flashbang';
             navigator.clipboard.writeText(textToCopy).then(function() {
-                var confirmation = confirm('Texto copiado para a área de transferência. Clique em OK para fechar esta página.');
-                if (confirmation) {
-                    window.close();
+                var popup = window.open('', '_blank', 'width=300,height=100');
+                if (popup) {
+                    popup.document.write('<html><head><title>Texto Copiado</title></head><body style="background-color: #121212; color: #FFFFFF; font-family: \'Lexend\', sans-serif; font-size: 14px; font-weight: bold; text-align: center;"><p>Texto copiado para a área de transferência.</p><script>window.setTimeout(function() { window.close(); }, 2000);</scr' + 'ipt></body></html>');
+                } else {
+                    alert('Não foi possível abrir a janela de popup. Feche esta página manualmente.');
                 }
             }).catch(function(err) {
                 console.error('Erro ao copiar texto: ', err);
